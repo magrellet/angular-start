@@ -3,7 +3,6 @@ import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 
 @Component({
-    selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
@@ -50,7 +49,7 @@ export class ProductListComponent implements OnInit {
             error => this.errorMessage = <any>error
         );
         //this.filteredProducts = this.products;
-       // console.log(this.products)
+        // console.log(this.products)
     }
 
     performFilter(filterBy: string): IProduct[] {
