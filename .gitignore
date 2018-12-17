@@ -37,3 +37,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Compress files
+*.zip
+*.rar
+*.7zip
