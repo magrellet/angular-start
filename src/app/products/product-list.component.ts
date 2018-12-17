@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
     imageMargin: number = 2;
     showImage: boolean = false;
     //listFilter: string = 'cart';
+    errorMessage: string;
 
     _listFilter: string;
     get listFilter() {
@@ -32,17 +33,24 @@ export class ProductListComponent implements OnInit {
 
     filteredProducts: IProduct[];
 
-    products: IProduct[] = [   ];    
+    products: IProduct[] = [];
 
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
 
     ngOnInit(): void {
-        console.log('In onInit');        
-        this.products = this.productService.getProducts();
-        this.filteredProducts = this.products;
-        console.log(this.products)
+        console.log('In onInit');
+        //this.products = this.productService.getProducts();
+        this.productService.getProducts().subscribe(
+            products => {
+                this.products = products;
+                this.filteredProducts = this.products
+            },
+            error => this.errorMessage = <any>error
+        );
+        //this.filteredProducts = this.products;
+       // console.log(this.products)
     }
 
     performFilter(filterBy: string): IProduct[] {
