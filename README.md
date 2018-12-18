@@ -29,3 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## install angula cli
 npm install -g @angular/cli
 ng g c products/product-detail --flat
+ng g g products/product-detail //create a guard
