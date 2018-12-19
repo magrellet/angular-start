@@ -30,3 +30,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 npm install -g @angular/cli
 ng g c products/product-detail --flat
 ng g g products/product-detail //create a guard
+
+ng g m products/product --flat --module app.module
+ng g m shared/shared --flat --module products/product.module
