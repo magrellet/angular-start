@@ -1,3 +1,107 @@
-<p>
-  customer works!
-</p>
+<div class="card">
+  <div class="card-header">
+    Sign up!
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="save()"
+          [formGroup]="customerForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="firstNameId">First Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="firstNameId"
+                 type="text"
+                 placeholder="First Name(required)"
+                 required
+                 minlength="3"
+                 formControlName="firstName"
+                 [ngClass]="{'is-valid': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid}" />
+
+          <span class="invalid-feedback">
+            <span *ngIf="customerForm.get('firstName').errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="customerForm.get('firstName').errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="lasttNameId">Last Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="lastNameId"
+                 type="text"
+                 placeholder="Last Name(required)"
+                 required
+                 minlength="3"
+                 formControlName="lastName"
+                 [ngClass]="{'is-valid': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid}" />
+
+          <span class="invalid-feedback">
+            <span *ngIf="customerForm.get('lastName').errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="customerForm.get('lastName').errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="emailId">Email</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="emailId"
+                 type="text"
+                 placeholder="Email(required)"
+                 required
+                 minlength="3"
+                 formControlName="email"
+                 [ngClass]="{'is-valid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid}" />
+
+          <span class="invalid-feedback">
+            <span *ngIf="customerForm.get('email').errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="customerForm.get('email').errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div>
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="customerForm.valid ? 'save your entered data' : 'Disabled until the form is valid'"
+                  [disabled]="!customerForm.valid">save</button>
+          <button class ="btn btn-outline-secondary"
+                  type="button"
+                  (click)="populateTestData()">
+                  Test Data
+               </button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <br>Dirty: {{customerForm.dirty}}
+  <br>Touched: {{customerForm.touched}}
+  <br>Valid: {{customerForm.valid}}
+  <br>ErrorRequired: {{customerForm.get('firstName').errors?.required}}
+  <br>ErrorLenght: {{customerForm.get('firstName').errors?.maxlength}}
+  <br>Value: {{customerForm.value | json}}
