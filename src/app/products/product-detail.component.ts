@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from './product';
+import { Product } from './product';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
-  product: IProduct;
+  product: Product;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
@@ -19,7 +19,7 @@ export class ProductDetailComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get('id');// the + is a shortcut to convert string to number
     this.pageTitle += `: ${id}`;
     this.product = {
-      "productId": id,
+      "id": id,
       "productName": "Leaf Rake",
       "productCode": "GDN-0011",
       "releaseDate": "March 19, 2016",
